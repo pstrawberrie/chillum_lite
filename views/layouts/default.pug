@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= `chiLLum Lite | ${title && title}`
+    link(rel='stylesheet', href='styles/bundle.min.css')
+    link(rel="shortcut icon" type="image/png" href="/images/favicon.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    block header
+      | &nbsp;
+
+    .content
+      block content
+
+    block scripts
+      script(src="/socket.io/socket.io.js")
+      script(src="scripts/bundle.min.js")
