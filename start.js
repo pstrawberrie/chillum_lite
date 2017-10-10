@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const compression = require('compression');
 
 // Database
 require('./db');
@@ -26,7 +27,7 @@ if (app.get('env') === 'development') {
       stats: {colors: true}
   }));
 } else {
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(__dirname, 'dist')));
   app.use(compression());
 }
 
@@ -34,13 +35,13 @@ if (app.get('env') === 'development') {
 var routes = require('./routes/index');
 app.use('/', routes);
 
-// Set up Socket Listener Events
+//+ Socket Listener Events
 io.on('connection', function(socket){
 
-  //+ Connect & Disconnect Notice
-  console.log('New Client Connected');
+  // Connect & Disconnect Notice
+  console.log('Socket Client Connected');
   socket.on('disconnect', function(){
-    console.log('Client Disconnected');
+    console.log('Socket Client Disconnected');
   });
 
   //+ Test Socket
@@ -51,8 +52,9 @@ io.on('connection', function(socket){
 });
 
 // Start Server
-http.listen(3069, function(){
-  console.log(chalk.cyan('+++ web listening (http://localhost:3069) +++'));
+const serverPort = 3069;
+http.listen(serverPort, function(){
+  console.log(chalk.cyan(`+++ chiLLum Lite is poppin off on http://localhost:${serverPort} +++`));
 });
 
 module.exports = app;
