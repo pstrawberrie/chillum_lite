@@ -1,5 +1,6 @@
 # chiLLum Lite
-A multi-functional Twitch Experience!
+A multi-functional Twitch Experience!  
+**Enhancing User Interaction xD**
 
 #### Setup
 1. Express [X]

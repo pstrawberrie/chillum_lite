@@ -6,8 +6,11 @@
 @dark-lighter: #363636;
 
 @gray: #ddd;
+@gray-darker: #aaa;
 
-@primary: #3cbae8;
+@primary: #76fb82; //lime green
+@secondary: #ff3f9a; //watermeLLon
+
 
 // Color Utility: Backgrounds
 .bg-white { background:@white;color:@dark; }
@@ -22,12 +25,21 @@
 body.theme-default {
   .bg-dark;
 
-  // Navigation Component
-  nav {background:@dark-lighter;}
-  nav a { color:@white; }
-  nav a:hover { border-color:@primary; }
+  // Logo
+  .logo {
+    color:@secondary;
+    span {color:@primary;}
+  }
 
-  // Card Component
-  .card__footer.has-border { border-color: @gray; }
+  // Dashboard
+  #dashboard {
+
+    .stats { border-color:@gray-darker; }
+
+    .button {
+      border-color:@gray-darker;
+      background:rgba(255,255,255,.25);
+    }
+  }
 
 }
