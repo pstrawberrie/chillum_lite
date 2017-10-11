@@ -1,25 +1,24 @@
-const knex = require('./index');
+const knex = require('./connect');
 
-//@TODO: Adapt this to suit our needs - keep userID and add in username as well
-exports.util = {
+module.exports = {
 
-  getUser(id) {
+  getUser(user) {
     return new Promise((resolve, reject) => {
       function resolver(result) { resolve(result) }
 
       // Query for user
-      knex.select('*').from('users').where('userID', '=', id)
+      knex.select('*').from('users').where('twitchUserID', '=', user.id)
       .then(rows => {
 
         // no user
         if(rows.length === 0) {
           //create new user
-          knex('users').insert({userID: id, numCommandsIssued: 1})
+          knex('users').insert({twitchUserID: id, twitchUsername: user.name})
           .then(result => {
 
             //query again and return the newly-created user
-            console.log(`No user found by id ${id}. Created new user: ${id}`);
-            knex.select('*').from('users').where('userID', '=', id)
+            console.log(`No user found by id ${user.id}. Created new user: ${user.name}/${user.id}`);
+            knex.select('*').from('users').where('twitchUserID', '=', user.id)
             .then(newUser => {
               return resolve(newUser[0]);
             }).catch(err => {`err getting newly-inserted user:\m${err}`})
@@ -28,19 +27,27 @@ exports.util = {
         }
 
         //user found, return user
-        if(rows.length === 1 && rows[0].userID === id) {
+        if(rows.length === 1 && rows[0].twitchUserID === user.id) {
           return resolver(rows[0]);
-
-          //@TODO: update user's numCommandsIssued +1
-          //does an update return the row that was updated??
-          // knex('users').where('userID', '=', id).update({numCommandsIssued: rows[0].numCommandsIssued + 1})
-          // .then(finishedUser => {
-          // })
-
         }
-      }).catch(err => {`err getting user ${id}:\m${err}`})
+      }).catch(err => {`err getting user ${user.id}:\m${err}`})
 
     })
+  },
+
+  test() {
+
+    knex('users').insert({twitchUserID: 'asdf123', twitchUsername: 'testUsor'})
+    .then(success => {
+
+      knex.select('*').from('users')
+      .then(rows => {
+        console.log(`testing select * from users:\n${rows}`)
+      }).catch(err => {console.log(`err testing select * from users:\n${err}`)})
+
+    }).catch(err => {console.log(`err testing insert new user:\n${err}`)})
+
+
   }
 
 }
