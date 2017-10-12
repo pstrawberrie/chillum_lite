@@ -28,18 +28,28 @@ body.theme-default {
   // Logo
   .logo {
     color:@secondary;
-    span {color:@primary;}
+    span.accent {color:@primary;}
+  }
+
+  // Buttons
+  .btn {
+    border-color:@gray-darker;
+    background:rgba(255,255,255,.25);
+    &:hover {
+      background:rgba(255,255,255,.1);
+      border-color:@white;
+    }
+    &.ghost {
+      background:transparent;
+      &:hover { background:rgba(255,255,255,.1); }
+    }
   }
 
   // Dashboard
   #dashboard {
 
-    .stats { border-color:@gray-darker; }
+    .quick-stats { border-color:@gray-darker; }
 
-    .button {
-      border-color:@gray-darker;
-      background:rgba(255,255,255,.25);
-    }
   }
 
 }

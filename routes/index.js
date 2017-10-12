@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 /* GET dashboard */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Dashboard' });
-});
+const dashboardController = require('../controllers/dashboardController');
+router.get('/', dashboardController.default);
 
 module.exports = router;

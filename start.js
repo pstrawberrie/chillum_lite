@@ -14,7 +14,7 @@ require('./db/connect');
 
 // Twitch Listener
 const bot = require('./lib/twitchListener');
-//bot.startListener();
+bot.startListener();
 
 // Socket Listener
 const socket = require('./lib/socketListener');
