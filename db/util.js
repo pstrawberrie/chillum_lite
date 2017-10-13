@@ -14,7 +14,7 @@ module.exports = {
         // no user
         if(rows.length === 0) {
           //create new user
-          knex('users').insert({twitchUsername: user.username})
+          knex('users').insert({twitchUsername: user.username, points:5, lastUpdate: new Date()})
           .then(result => {
 
             //query again and return the newly-created user
@@ -28,10 +28,16 @@ module.exports = {
         }
 
         //user found, return user
-        if(rows.length === 1 && rows[0].twitchUsername === user.id) {
-          resolver(rows[0]);
+        if(rows.length === 1 && rows[0].twitchUsername === user.username) {
+
+          knex('users').where('twitchUsername', '=', user.username)
+          .update({points: rows[0].points + 1, lastUpdate: new Date()})
+          .then(updated => {
+            resolver(rows[0]);
+          }).catch(err => {`err updating user points ${user.username}:\m${err}`})
+
         }
-      }).catch(err => {`err getting user ${user.id}:\m${err}`})
+      }).catch(err => {`err getting user ${user.username}:\m${err}`})
 
     })
   },
@@ -49,6 +55,20 @@ module.exports = {
         resolver(dashboardObj);
       })
       .catch(err => {console.log(err)})
+
+    })
+  },
+
+  //+ Get user points
+  getUserPoints(user) {
+    return new Promise((resolve, reject) => {
+      function resolver(result) { resolve(result) }
+
+      knex('users').select('points').where('twitchUsername', '=', user)
+      .then(points => {
+        if(points.length === 0) return resolver(false);
+        return resolver(points[0].points);
+      }).catch(err => {console.log(err)})
 
     })
   },

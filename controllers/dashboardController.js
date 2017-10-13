@@ -5,6 +5,6 @@ exports.default = (req, res) => {
   db.getDashbaordData()
   .then(result => {
     res.render('dashboard', { chillum: result, title: 'Dashboard' })
-  })
+  }).catch(err => {console.log(err)})
 
 }

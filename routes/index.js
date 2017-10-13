@@ -5,4 +5,8 @@ const router = express.Router();
 const dashboardController = require('../controllers/dashboardController');
 router.get('/', dashboardController.default);
 
+/* GET screen1 */
+const screenController = require('../controllers/screenController');
+router.get('/screen1', screenController.default);
+
 module.exports = router;

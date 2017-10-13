@@ -22,8 +22,8 @@
 .text-black { color:@dark; }
 
 // Theme Master
-body.theme-default {
-  .bg-dark;
+html.theme-default {
+  body {.bg-dark;}
 
   // Logo
   .logo {
@@ -50,6 +50,17 @@ body.theme-default {
 
     .quick-stats { border-color:@gray-darker; }
 
+  }
+
+}
+
+// Screen Theme
+html.theme-screen {
+
+  .screen-chat .item {
+    background:rgba(0,0,0,.75);
+    color:@white;
+    .user {color:@secondary;}
   }
 
 }

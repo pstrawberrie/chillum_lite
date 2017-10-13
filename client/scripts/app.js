@@ -8,6 +8,18 @@ socket.on('test', function(info) {
 
 });
 
-$('a#test').on('click', function() {
-  socket.emit('test', {test:'front-end-click'})
-})
+// $('a#test').on('click', function() {
+//   socket.emit('test', {test:'front-end-click'})
+// })
+
+// Screen 1
+socket.on('screenChat', function(info) {
+
+    $('.screen-chat').prepend(`
+      <div class="item">
+        <span class="user">${info.username}</span>
+        <span class="message">${info.message}</span>
+      </div>
+    `)
+
+});
