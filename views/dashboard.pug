@@ -7,9 +7,15 @@ block content
       span.accent Lite
     .quick-stats
       span Users: #{chillum.totalUsers}
-      a.btn.ghost.tiny#test(href="##") Socket Test
     .section.justify-center
-      a.btn(href="#idk") Thing 1
-      a.btn(href="#idk") Thing 1
-      a.btn(href="#idk") Thing 1
-      a.btn(href="#idk") Thing 1
+      - const screensAvailable = screens.length > 0 ? true : false
+      if screensAvailable
+        each s in screens
+          a.btn(href=`/screen/${s.name}`)= s.name
+      else
+        .section.flex-column
+          .section.justify-center
+            p Hey wtf u don't have a screens!?
+          .section
+            a.btn(data-modal-opens="newscreen" href="##") Create New Screen
+        

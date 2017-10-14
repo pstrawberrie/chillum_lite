@@ -11,6 +11,9 @@
 @primary: #76fb82; //lime green
 @secondary: #ff3f9a; //watermeLLon
 
+@blue: #79def7;
+
+@danger: #f2605e;
 
 // Color Utility: Backgrounds
 .bg-white { background:@white;color:@dark; }
@@ -31,6 +34,16 @@ html.theme-default {
     span.accent {color:@primary;}
   }
 
+  // Forms
+  form {
+    input, textarea {
+      border-color:@secondary;
+      background:transparent;
+      color:@white;
+    }
+    input[type=submit] {background:@blue;color:@dark;}
+  }
+
   // Buttons
   .btn {
     border-color:@gray-darker;
@@ -43,6 +56,16 @@ html.theme-default {
       background:transparent;
       &:hover { background:rgba(255,255,255,.1); }
     }
+  }
+
+  // Modal
+  .modal {
+    background:rgba(0,0,0,.91);
+    color:@white;
+    .modal-content {
+      border-color:@secondary;
+    }
+    .close-modal { color:@danger; }
   }
 
   // Dashboard

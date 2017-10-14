@@ -1,0 +1,9 @@
+.modal(data-modal="newscreen")
+  a.close-modal(href="##") &nsim;
+  form.modal-content(action="/newscreen", name="newscreen", method="POST")
+    .item
+      label(for="screenName") Screen Name
+      input(name="screenName", type="text", placeholder="Name your screen plz")
+    .item
+      input(type="submit", value="Create Screen")
+    

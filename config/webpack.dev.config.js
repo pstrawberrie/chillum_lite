@@ -19,7 +19,7 @@ module.exports = {
 
   output: {
     path: '/',//not used
-    filename: 'scripts/bundle.min.js', //keeping .min.js so we don't have to make a separate index.html
+    filename: 'scripts/bundle.min.js',
     publicPath: 'http://localhost:3069/'
   },
 

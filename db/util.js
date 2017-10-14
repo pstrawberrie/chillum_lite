@@ -73,6 +73,47 @@ module.exports = {
     })
   },
 
+  //+ Get all screens
+  getAllScreens() {
+    return new Promise((resolve, reject) => {
+      function resolver(result) { return resolve(result); }
+
+      knex('screens').select('*')
+      .then(result => {
+        return resolver(result);
+      }).catch(err => {console.log(err)})
+
+    })
+  },
+
+  //+ Get screen
+  getScreen(name) {
+    return new Promise((resolve, reject) => {
+      function resolver(result) { resolve(result) }
+
+      knex('screens').select('*').where('name', '=', name)
+      .then(result => {
+        console.log(result[0]);
+        return resolver(result);
+      }).catch(err => {console.log(err)})
+
+    })
+  },
+
+  //+ Save New SCreen
+  newScreen(json) {
+    return new Promise((resolve, reject) => {
+      function resolver(result) { return resolve(result) }
+
+      console.log(json.name);
+      knex('screens').insert({name:json.name, widgets:json.widgets})
+      .then(saved => {
+        return resolver(saved);
+      }).catch(err => {console.log(err)})
+
+    })
+  },
+
   //+ Testing
   test() {
 

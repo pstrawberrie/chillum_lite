@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET dashboard */
+// Controllers
 const dashboardController = require('../controllers/dashboardController');
-router.get('/', dashboardController.default);
-
-/* GET screen1 */
 const screenController = require('../controllers/screenController');
-router.get('/screen1', screenController.default);
+
+/* GET dashboard */
+router.get('/', dashboardController.getAllScreens, dashboardController.default);
+router.post('/newscreen', dashboardController.newScreen);
+
+/* GET a screen */
+router.get('/screen/:name', screenController.getScreen, screenController.default);
 
 module.exports = router;
