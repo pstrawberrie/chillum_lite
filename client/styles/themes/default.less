@@ -46,25 +46,23 @@ html.theme-default {
 
   // Buttons
   .btn {
-    border-color:@gray-darker;
-    background:rgba(255,255,255,.25);
+    border-color:@dark-lighter;
+    background:@blue;
+    color:@dark;
     &:hover {
-      background:rgba(255,255,255,.1);
       border-color:@white;
     }
     &.ghost {
       background:transparent;
-      &:hover { background:rgba(255,255,255,.1); }
+      &:hover { background:rgba(0,0,0,.33); }
     }
   }
 
   // Modal
   .modal {
-    background:rgba(0,0,0,.91);
+    background:rgba(0,0,0,.95);
     color:@white;
-    .modal-content {
-      border-color:@secondary;
-    }
+    .modal-content { border-color:@secondary; }
     .close-modal { color:@danger; }
   }
 

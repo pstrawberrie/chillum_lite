@@ -7,15 +7,16 @@ block content
       span.accent Lite
     .quick-stats
       span Users: #{chillum.totalUsers}
+      span Screens: #{chillum.totalScreens}
+      span Widgets: #{chillum.totalWidgets}
+      a.btn.tiny(data-modal-opens="newscreen" href="##") + Screen
     .section.justify-center
       - const screensAvailable = screens.length > 0 ? true : false
       if screensAvailable
         each s in screens
           a.btn(href=`/screen/${s.name}`)= s.name
       else
-        .section.flex-column
-          .section.justify-center
-            p Hey wtf u don't have a screens!?
-          .section
-            a.btn(data-modal-opens="newscreen" href="##") Create New Screen
+        .section.flex-column.mt-3
+          h4.font-default.text-center Create a screen to get started
+          a.btn(data-modal-opens="newscreen" href="##") Create New Screen
         

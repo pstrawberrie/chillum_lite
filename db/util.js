@@ -48,11 +48,37 @@ module.exports = {
       function resolver(result) { resolve(result) }
       const dashboardObj = {};
 
-      knex('users').count('twitchUsername')
-      .then(result => {
-        dashboardObj.totalUsers = result[0]['count("twitchUsername")'];
-        console.log(dashboardObj);
-        resolver(dashboardObj);
+      knex('users').count('*')
+      .then(users => {
+        dashboardObj.totalUsers = users[0]['count(*)'];
+
+        knex('screens').count('*')
+        .then(screens => {
+          dashboardObj.totalScreens = screens[0]['count(*)'];
+
+          knex('widgets').count('*')
+          .then(widgets => {
+            dashboardObj.totalWidgets = widgets[0]['count(*)'];
+            resolver(dashboardObj);
+          }).catch(err => {console.log(err)})
+
+        }).catch(err => {console.log(err)})
+
+
+      })
+      .catch(err => {console.log(err)})
+
+    })
+  },
+
+  //+ Get chiLLum Lite Widgets
+  getWidgets() {
+    return new Promise((resolve, reject) => {
+      function resolver(result) { resolve(result) }
+
+      knex('widgets').select('*')
+      .then(widgets => {
+        resolver(widgets);
       })
       .catch(err => {console.log(err)})
 

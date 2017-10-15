@@ -25,8 +25,20 @@ exports.newScreen = (req, res) => {
 exports.default = (req, res) => {
 
   db.getDashbaordData()
-  .then(result => {
-    res.render('dashboard', { chillum: result, title: 'Dashboard' })
+  .then(dashTotals => {
+
+    db.getWidgets()
+    .then(widgets => {
+
+      res.render('dashboard', {
+        chillum: dashTotals,
+        widgets,
+        title: 'Dashboard'
+      });
+
+    }).catch(err => {console.log(err)})
+
+
   }).catch(err => {console.log(err)})
 
 }

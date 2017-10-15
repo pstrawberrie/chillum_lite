@@ -43,7 +43,8 @@ module.exports = {
     //   compress: { warnings: false }
     // }),
     new CopyWebpackPlugin([
-      {from: path.join(__dirname, "../client/images"), to: "images"}
+      {from: path.join(__dirname, "../client/images"), to: "images"},
+      {from: path.join(__dirname, "../client/fonts"), to: "fonts"}
     ])
   ]
 
