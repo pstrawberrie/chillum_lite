@@ -3,18 +3,14 @@
   .logo { .no-select; }
 
   .quick-stats {
-    .absolute;
-    .font-console;
-    top:.25rem;left:.25rem;
-    padding:.75rem;
-    font-size:.8rem;
-    border:1px dotted transparent;
+    .absolute;.block;
+    z-index:5;
 
-    span {
-      .block;
-      margin-bottom:.5rem;
-    }
-    .btn { margin: .65rem 0 0 0; }
+    top:0;left:0;
+    font-size:.8rem;
+
+    span { .block; margin-bottom:.38rem;}
+    .btn { margin: .65rem 0 0 0; span { margin-bottom:0; } }
   }
 
 }

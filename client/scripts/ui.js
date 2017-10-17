@@ -30,3 +30,8 @@ $('[data-modal-opens]').on('click', function() {
 $('a.close-modal').on('click', function() {
   closeModals();
 })
+
+/* Tests! */
+$('#audiotest').on('click', function() {
+  $('#audio').play();
+})

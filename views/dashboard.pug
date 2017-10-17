@@ -6,10 +6,17 @@ block content
       | chi<span class="spin">L</span>Lum
       span.accent Lite
     .quick-stats
-      span Users: #{chillum.totalUsers}
-      span Screens: #{chillum.totalScreens}
-      span Widgets: #{chillum.totalWidgets}
-      a.btn.tiny(data-modal-opens="newscreen" href="##") + Screen
+      .box
+        .box-title Quick Info
+        .box-area
+          span Users: #{chillum.totalUsers}
+          span Screens: #{chillum.totalScreens}
+          span Widgets: #{chillum.totalWidgets}
+          a.btn.tiny#test-audio(href="#test")
+            span.typcn.typcn-notes
+            span &nbsp; Test
+            audio#audiotest(src="/audio/yay.wav")
+          a.btn.tiny(data-modal-opens="newscreen" href="##") + Screen
     .section.justify-center
       - const screensAvailable = screens.length > 0 ? true : false
       if screensAvailable
@@ -19,4 +26,10 @@ block content
         .section.flex-column.mt-3
           h4.font-default.text-center Create a screen to get started
           a.btn(data-modal-opens="newscreen" href="##") Create New Screen
-        
+    // Doing some styling practice stuff ok
+    .section.mt-2
+      .box-container.default
+        .box
+          .box-title Put something k00L
+          .box-area
+            .box-text hey once we make something k00l let's put it here ok

@@ -1,0 +1,37 @@
+/* Box Component */
+.box {
+  .section;
+  .flex-column;
+  .shadow-1;
+  .border-radius(.1rem);
+  min-width:145px;
+  .m-1;
+
+  .box-title {
+    .block;.relative;
+    .text-center;
+    padding:1rem;
+    font-size:1.1rem;
+  }
+
+  .box-area {
+    .block;.relative;
+    padding:1rem;
+  }
+
+  .box-text {
+    margin-bottom:.75rem;
+  }
+}
+
+.box-container {
+
+  .section;
+  .space-around;
+  .flex-wrap(wrap);
+
+  &.default {
+    .box { .self-stretch; }
+  }
+
+}

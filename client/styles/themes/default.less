@@ -30,8 +30,8 @@ html.theme-default {
 
   // Logo
   .logo {
-    color:@secondary;
-    span.accent {color:@primary;}
+    color:@white;
+    span.accent {color:@gray;}
   }
 
   // Forms
@@ -47,14 +47,19 @@ html.theme-default {
   // Buttons
   .btn {
     border-color:@dark-lighter;
-    background:@blue;
+    background:rgba(255,255,255,.9);
     color:@dark;
     &:hover {
+      background:rgba(255,255,255, 1);
       border-color:@white;
     }
     &.ghost {
+      color:@gray;
       background:transparent;
-      &:hover { background:rgba(0,0,0,.33); }
+      &:hover {
+        color:@white;
+        background:rgba(255,255,255,.33);
+      }
     }
   }
 
@@ -64,6 +69,12 @@ html.theme-default {
     color:@white;
     .modal-content { border-color:@secondary; }
     .close-modal { color:@danger; }
+  }
+
+  // Boxes
+  .box {
+    background:rgba(255,255,255,.1);
+    .box-title { background:rgba(255,255,255,.1); }
   }
 
   // Dashboard
