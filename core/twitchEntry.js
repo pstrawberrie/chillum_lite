@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const fs = require('fs');
-const twitchCommandsDir = './lib/twitch';
+const twitchCommandsDir = './core/twitch';
 const twitchCommands = [];
 fs.readdirSync(twitchCommandsDir).forEach(file => {
   twitchCommands.push(file.replace('.js', ''));

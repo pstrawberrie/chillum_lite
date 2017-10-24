@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const fs = require('fs');
-const socketDir = './lib/socket';
+const socketDir = './core/socket';
 const socketJobs = [];
 fs.readdirSync(socketDir).forEach(file => {
   socketJobs.push(file.replace('.js', ''));

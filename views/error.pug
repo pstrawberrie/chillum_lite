@@ -1,0 +1,10 @@
+extends layouts/defaultLayout
+
+block content
+  .section.flex-column.pl-2.pr-2
+    .section
+      h2= status
+    .section
+      p= message
+    .section
+      pre.error!= stackHighlighted

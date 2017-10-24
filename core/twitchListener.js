@@ -3,7 +3,6 @@ const util = require('./util');
 const chalk = require('chalk');
 const tmi = require('tmi.js');
 const twitchEntry = require('./twitchEntry');
-const db = require('../db/util');
 
 //+ IRC Setup
 const tmiOptions = {

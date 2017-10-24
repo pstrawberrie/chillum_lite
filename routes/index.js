@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const { catchErrors } = require('../handlers/errorHandlers');
 
 // Controllers
 const dashboardController = require('../controllers/dashboardController');
 const screenController = require('../controllers/screenController');
 
-/* GET dashboard */
-router.get('/', dashboardController.getAllScreens, dashboardController.default);
-router.post('/newscreen', dashboardController.newScreen);
+/* Dashboard */
+router.get('/', catchErrors(dashboardController.default));
 
-/* GET a screen */
-router.get('/screen/:name', screenController.getScreen, screenController.default);
+/* Screens */
+router.get('/screen/:name', catchErrors(screenController.default));
+router.post('/newscreen', dashboardController.newScreen);
 
 module.exports = router;

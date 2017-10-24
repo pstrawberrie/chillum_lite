@@ -1,19 +1,15 @@
-const db = require('../db/util');
-
-exports.getScreen = (req, res, next) => {
-
-  const screenName = req.params.name;
-  db.getScreen(screenName)
-  .then(screen => {
-    res.locals.screen = screen;
-    return next();
-  }).catch(err => { console.log(err); res.status(500).send(err) })
-
-}
+const mongoose = require('mongoose');
+const promisify = require('es6-promisify');
+const User = mongoose.model('User');
+const Screen = mongoose.model('Screen');
+const Widget = mongoose.model('Widget');
 
 exports.default = (req, res) => {
 
-  const screen = res.locals.screen;
-  res.render('screen', { title: screen.name, screen})
+  //1. grab screen from mongodb
+  //2. render screen
+
+  res.json({screen:'fosho'})
+  //res.render('screen', { title: screen.name, screen})
 
 }
