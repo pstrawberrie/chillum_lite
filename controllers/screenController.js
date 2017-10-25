@@ -6,11 +6,14 @@ const getScreen = require('../db/lib/getScreenDB');
 
 exports.default = async (req, res) => {
 
-  const screen = await getScreen(req.params.name);
+  const screenPromise = getScreen(req.params.name);
+  const widgetPromise = Widget.find();
+  const [screen, widgets] = await Promise.all([screenPromise, widgetPromise])
   if(screen == null || screen == undefined) return res.redirect('/');
   res.render('screen', {
     title: screen.name,
-    screen
+    screen,
+    widgets
   });
 
 }

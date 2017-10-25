@@ -1,16 +1,17 @@
 .modal(data-modal="newscreen")
   a.close-modal(href="##")
-    span.typcn.typcn-times
+    span x
   form.modal-content(action="/newscreen", name="newscreen", method="POST")
     .item
       label(for="screenName") Screen Name?
       input(name="screenName", type="text", placeholder=`screen ${dashboard.totalScreens + 1}`)
+    .item
+      input(type="submit", value="Create Screen")
+  //-
     .item.pt-1 Widgets?
     .item.checks
       each widget in dashboard.widgets
         .check
           input(type="checkbox", name=`widget_${widget.name}`)
           label(for=widget.name)= widget.name
-    .item
-      input(type="submit", value="Create Screen")
     

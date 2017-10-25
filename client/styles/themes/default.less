@@ -14,6 +14,8 @@
 @blue: #79def7;
 
 @danger: #f2605e;
+@error: #c13434;
+@success: #2eaa2e;
 
 // Color Utility: Backgrounds
 .bg-white { background:@white;color:@dark; }
@@ -37,11 +39,11 @@ html.theme-default {
   // Forms
   form {
     input, textarea {
-      border-color:@secondary;
+      border-color:@white;
       background:transparent;
       color:@white;
     }
-    input[type=submit] {background:@blue;color:@dark;}
+    input[type=submit] {background:rgba(255,255,255,.85);color:@dark;}
   }
 
   // Buttons
@@ -68,13 +70,20 @@ html.theme-default {
     background:rgba(0,0,0,.95);
     color:@white;
     .modal-content { border-color:@secondary; }
-    .close-modal { color:@danger; }
+    .close-modal { color:@white; }
+  }
+
+  // Alerts
+  .alert-container .alert {
+    background:@danger;color:@dark;
+    &.error {background:@error;color:@white;}
+    &.success {background:@success;color:@white;}
   }
 
   // Boxes
   .box {
-    background:rgba(255,255,255,.1);
-    .box-title { background:rgba(255,255,255,.1); }
+    background:rgba(0,0,0,.8);
+    .box-title { background:rgba(0,0,0,.3); }
   }
 
   // Dashboard
@@ -87,8 +96,15 @@ html.theme-default {
 }
 
 // Screen Theme
-html.theme-screen {
+.theme-screen {
 
+  // Menu
+  #screen .screen-menu a {
+      background:rgba(255,255,255,.8);
+      color:@dark;
+  }
+
+  // Chat
   .screen-chat .item {
     background:rgba(0,0,0,.75);
     color:@white;

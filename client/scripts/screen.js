@@ -42,11 +42,12 @@ socket.on('test', function(info) {
 //+ SOCKET: Screen Chat
 socket.on('screenChat', function(info) {
 
-    $('.screen-chat').prepend(`
-      <div class="item">
-        <span class="user">${info.username}</span>
-        <span class="message">${info.message}</span>
-      </div>
-    `)
+  console.log(`${info.username} - ${info.message}`);
+  // $('.screen-chat').prepend(`
+  //   <div class="item">
+  //     <span class="user">${info.username}</span>
+  //     <span class="message">${info.message}</span>
+  //   </div>
+  // `)
 
 });

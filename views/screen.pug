@@ -3,11 +3,15 @@ extends layouts/screenLayout
 block content
   #screen
     h1= screen.name
+    .screen-menu
+      a(data-modal-opens="newscreenwidget" href="##")
+        span.typcn.typcn-plus
+      a(href="##")
+        span.typcn.typcn-brush
+      a(href="/")
+        span.typcn.typcn-th-small
     .item
       .widget#widget-menu
         p widget menu
     .widget#test-widget
       span hey it's test widget
-    //-
-      .screen-squid
-      .screen-chat

@@ -8,6 +8,9 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const compression = require('compression');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const errorHandlers = require('./handlers/errorHandlers');
 
@@ -24,7 +27,7 @@ require('./db/populate');
 
 // Twitch Listener
 const bot = require('./core/twitchListener');
-//bot.startListener();
+bot.startListener();
 
 // Socket Listener
 const socket = require('./core/socketListener');
@@ -49,6 +52,15 @@ if (app.get('env') === 'development') {
   app.use(express.static(path.join(__dirname, 'dist')));
   app.use(compression());
 }
+
+// Session
+app.use(session({
+  secret: secret.sessionSecret,
+  key: secret.sessionKey,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
 
 // Default Middleware
 app.use(flash());
