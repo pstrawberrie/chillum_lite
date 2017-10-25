@@ -19,7 +19,10 @@ exports.newScreen = async (req, res) => {
 
   if(!req.body) return res.redirect('/');
   const checkName = await Screen.findOne({name:req.body.screenName});
-  if(checkName != null) return res.redirect('/');
+  if(checkName != null) {
+    req.flash('error', `${req.body.screenName} already exists`);
+    return res.redirect('/');
+  }
 
   // Check for widgets
   const bodyKeys = Object.keys(req.body);
