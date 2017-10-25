@@ -9,7 +9,7 @@
     .item.checks
       each widget in dashboard.widgets
         .check
-          input(type="checkbox", name=widget.name)
+          input(type="checkbox", name=`widget_${widget.name}`)
           label(for=widget.name)= widget.name
     .item
       input(type="submit", value="Create Screen")

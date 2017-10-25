@@ -15,8 +15,28 @@ exports.default = async (req, res) => {
 
 }
 
-exports.newscreen = (req, res) => {
+exports.newScreen = async (req, res) => {
 
-  res.json({newscreen:'make it work'});
+  if(!req.body) return res.redirect('/');
+  const checkName = await Screen.findOne({name:req.body.screenName});
+  if(checkName != null) return res.redirect('/');
+
+  // Check for widgets
+  const bodyKeys = Object.keys(req.body);
+  let widgetArr = [];
+  await bodyKeys.forEach((key) => {
+    if(key.includes('widget_')) {
+      let widgetKey = key.replace('widget_', '');
+      widgetArr.push(widgetKey);
+    }
+  });
+
+  // New Screen obj
+  const screenObj = { name: req.body.screenName }
+  if(widgetArr.length > 0) screenObj.widgets = widgetArr;
+  const newScreen = new Screen(screenObj);
+
+  await newScreen.save();
+  res.redirect(`/screen/${req.body.screenName}`);
 
 }

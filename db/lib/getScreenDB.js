@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Screen = mongoose.model('Screen');
 
+// Get a screen
 module.exports = (name) => {
   return new Promise((resolve, reject) => {
     function resolver(result) {resolve(result)}

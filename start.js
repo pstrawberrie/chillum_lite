@@ -8,6 +8,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const compression = require('compression');
+const flash = require('connect-flash');
 const errorHandlers = require('./handlers/errorHandlers');
 
 // Database
@@ -23,7 +24,7 @@ require('./db/populate');
 
 // Twitch Listener
 const bot = require('./core/twitchListener');
-bot.startListener();
+//bot.startListener();
 
 // Socket Listener
 const socket = require('./core/socketListener');
@@ -48,6 +49,13 @@ if (app.get('env') === 'development') {
   app.use(express.static(path.join(__dirname, 'dist')));
   app.use(compression());
 }
+
+// Default Middleware
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flashes = req.flash();
+  next();
+});
 
 // Routes
 var routes = require('./routes/index');

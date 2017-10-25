@@ -1,0 +1,7 @@
+if locals.flashes
+  .alert-container
+    - const categories = Object.keys(locals.flashes)
+    each category in categories
+      each message in flashes[category]
+        .alert(class=`alert--${category}`, onClick="this.remove()")
+          span!= message

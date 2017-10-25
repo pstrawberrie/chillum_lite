@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
+// Find a user or make a new user
 module.exports = (username) => {
   return new Promise((resolve, reject) => {
     function resolver(result) {resolve(result)}

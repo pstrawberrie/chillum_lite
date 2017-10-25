@@ -3,6 +3,7 @@ const User = mongoose.model('User');
 const Screen = mongoose.model('Screen');
 const Widget = mongoose.model('Widget');
 
+// Get all dashboard data
 module.exports = () => {
   return new Promise((resolve, reject) => {
     function resolver(result) {resolve(result)}
