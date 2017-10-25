@@ -1,19 +1,39 @@
 const chalk = require('chalk');
 const mongoose = require('mongoose');
-const promisify = require('es6-promisify');
+const User = mongoose.model('User');
 const Screen = mongoose.model('Screen');
 const Widget = mongoose.model('Widget');
 
-//@TODO: Populate a new database on first start
-//0. Check for db
-//1. Populate db stats
-//2. Populate default widgets
-//3. Populate test screen
+async function checkDB() {
 
-//do some async await and promisify!
-const screens = Screen.find({});
-const widgets = Widget.find({});
+    const screenPromise = Screen.find();
+    const widgetPromise = Widget.find();
+    const userPromise = User.find();
+    try {
+      const [screens, widgets, users] = await Promise.all([
+        screenPromise, widgetPromise, userPromise
+      ]);
+      if(screens.length === 0) {
+        const screen = new Screen({name:'Test Screen'});
+        screen.save()
+        .then(r => { console.log(chalk.gray('+++ Populated Screens +++')) })
+        .catch(e => {console.log(e)})
+      }
+      if(widgets.length === 0) {
+        const widget = new Widget({name:'Test Widget'});
+        widget.save()
+        .then(r => { console.log(chalk.gray('+++ Populated Widgets +++')) })
+        .catch(e => {console.log(e)})
+      }
+      if(users.length === 0) {
+        const user = new User({name:'testUser'});
+        user.save()
+        .then(r => { console.log(chalk.gray('+++ Populated Users +++')) })
+        .catch(e => {console.log(e)})
+      }
+    } catch (err) {
+      console.log(err);
+    }
+}
 
-
-
-console.log(chalk.cyan(`+++ set up mongodb populate +++`));
+checkDB();

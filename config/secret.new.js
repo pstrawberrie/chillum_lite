@@ -1,5 +1,5 @@
 module.exports = {
-  dbFile: './db/local.sqlite',
+  dbString: 'mongodb://localhost:27017/chillum',
   twitchUsername: 'xxx',
   twitchChannels: ['xx'],
   botOwner: 'xxx',

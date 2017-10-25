@@ -10,6 +10,14 @@ const screenSchema = new Schema ({
     required: 'Screen needs a name',
     trim: true
   },
+  screenWidth: {
+    type: Number,
+    default: 1920
+  },
+  screenHeight: {
+    type: Number,
+    default: 1080
+  },
   widgets: Array
 
 });

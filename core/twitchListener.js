@@ -3,6 +3,7 @@ const util = require('./util');
 const chalk = require('chalk');
 const tmi = require('tmi.js');
 const twitchEntry = require('./twitchEntry');
+const getUser = require('../db/lib/getUserDB');
 
 //+ IRC Setup
 const tmiOptions = {
@@ -27,7 +28,7 @@ const internalOptions = {
 
 //+ IRC Connected Listener
 irc.on('connected', function() {
-  console.log(chalk.magenta('=-=-=-=-=-=-=-=- BOT IS ON -=-=-=-=-=-=-=-='))
+  console.log(chalk.magenta('+++ twitch bot connected +++'))
   //irc.whisper(secret.botOwner, 'irc bot just connected to ' + secret.twitchChannels);
   //irc.say(secret.twitchMainChannel, 'Squid1 PeteZaroll PeteZaroll bot connected MrDestructoid DarkMode Squid4');
 });
@@ -44,8 +45,7 @@ irc.on("chat", function (channel, userstate, message, self) {
   if (self) return;
 
   // Be a creeper and capture new users
-  //@TODO: send through user object instead of just username??
-  db.getUser(userstate)
+  getUser(userstate.username)
   .catch(err => {console.log(`err on twitchListener get user\n${err}`)});
 
   // Record Screen Chat?

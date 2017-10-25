@@ -23,7 +23,7 @@ require('./db/populate');
 
 // Twitch Listener
 const bot = require('./core/twitchListener');
-//bot.startListener();
+bot.startListener();
 
 // Socket Listener
 const socket = require('./core/socketListener');

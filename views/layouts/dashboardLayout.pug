@@ -1,6 +1,7 @@
 doctype html
-html.theme-default.screen
+html.theme-default
   //
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     ......._....._._......_......................._......_._.......
     ......|.|...(_).|....|.|.....................|.|....(_).|......
     ...___|.|__.._|.|....|.|...._..._._.__.___...|.|....._|.|_.___.
@@ -9,17 +10,23 @@ html.theme-default.screen
     ..\___|_|.|_|_|______|______\__,_|_|.|_|.|_|.|______|_|\__\___|
     .........................................______................
     ........................................|______|...............
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   head
     title= `chiLLum Lite | ${title && title}`
     link(href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Poiret+One|Roboto", rel="stylesheet")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.woff")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css", rel="stylesheet")
     link(rel='stylesheet', href='/styles/bundle.min.css')
     link(rel="shortcut icon" type="image/png" href="/images/favicon.png")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-  body.screen
+  body
     block header
       
     .content
       block content
+
+    //- Modals
+    include ../partials/newScreenModal
 
     block scripts
       script(src="/socket.io/socket.io.js")

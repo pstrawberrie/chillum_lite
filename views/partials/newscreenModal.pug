@@ -4,10 +4,10 @@
   form.modal-content(action="/newscreen", name="newscreen", method="POST")
     .item
       label(for="screenName") Screen Name?
-      input(name="screenName", type="text", placeholder=`screen ${chillum.totalScreens + 1}`)
+      input(name="screenName", type="text", placeholder=`screen ${dashboard.totalScreens + 1}`)
     .item.pt-1 Widgets?
     .item.checks
-      each widget in widgets
+      each widget in dashboard.widgets
         .check
           input(type="checkbox", name=widget.name)
           label(for=widget.name)= widget.name

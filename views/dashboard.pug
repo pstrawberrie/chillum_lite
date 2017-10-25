@@ -1,4 +1,4 @@
-extends layouts/defaultLayout
+extends layouts/dashboardLayout
 
 block content
   #dashboard
@@ -9,18 +9,18 @@ block content
       .box
         .box-title Quick Info
         .box-area
-          span Users: #{chillum.totalUsers}
-          span Screens: #{chillum.totalScreens}
-          span Widgets: #{chillum.totalWidgets}
+          span Users: #{dashboard.totalUsers}
+          span Screens: #{dashboard.totalScreens}
+          span Widgets: #{dashboard.totalWidgets}
           a.btn.tiny#test-audio(href="#test")
             span.typcn.typcn-notes
             span &nbsp; Test
             audio#audiotest(src="/audio/yay.wav")
           a.btn.tiny(data-modal-opens="newscreen" href="##") + Screen
     .section.justify-center
-      - const screensAvailable = screens.length > 0 ? true : false
+      - const screensAvailable = dashboard.screens.length > 0 ? true : false
       if screensAvailable
-        each s in screens
+        each s in dashboard.screens
           a.btn(href=`/screen/${s.name}`)= s.name
       else
         .section.flex-column.mt-3

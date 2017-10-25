@@ -9,7 +9,7 @@ const socketObj = {};
 socketJobs.forEach(job => {
   socketObj[job] = require(`./socket/${job}`);
 });
-console.log(chalk.cyan(`Registered Socket Jobs: ${socketJobs.join(', ')}`));
+console.log(chalk.yellow(`Registered Socket Jobs: ${socketJobs.join(', ')}`));
 
 // Run the socket job
 module.exports = (eventName, json) => {

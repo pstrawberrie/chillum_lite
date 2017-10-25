@@ -2,5 +2,12 @@ extends layouts/screenLayout
 
 block content
   #screen
-    .screen-squid
-    .screen-chat
+    h1= screen.name
+    .item
+      .widget#widget-menu
+        p widget menu
+    .widget#test-widget
+      span hey it's test widget
+    //-
+      .screen-squid
+      .screen-chat

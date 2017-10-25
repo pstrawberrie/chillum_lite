@@ -1,15 +1,22 @@
 const mongoose = require('mongoose');
-const promisify = require('es6-promisify');
 const User = mongoose.model('User');
 const Screen = mongoose.model('Screen');
 const Widget = mongoose.model('Widget');
+const getScreen = require('../db/lib/getScreenDB');
 
-exports.default = (req, res) => {
+exports.default = async (req, res) => {
 
-  //1. grab screen from mongodb
-  //2. render screen
+  const screen = await getScreen(req.params.name);
+  if(screen == null || screen == undefined) return res.redirect('/');
+  res.render('screen', {
+    title: screen.name,
+    screen
+  });
 
-  res.json({screen:'fosho'})
-  //res.render('screen', { title: screen.name, screen})
+}
+
+exports.newscreen = (req, res) => {
+
+  res.json({newscreen:'make it work'});
 
 }

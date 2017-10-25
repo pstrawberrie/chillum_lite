@@ -11,6 +11,6 @@ router.get('/', catchErrors(dashboardController.default));
 
 /* Screens */
 router.get('/screen/:name', catchErrors(screenController.default));
-router.post('/newscreen', dashboardController.newScreen);
+//router.post('/newscreen', dashboardController.newScreen);
 
 module.exports = router;

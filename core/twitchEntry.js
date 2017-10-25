@@ -9,7 +9,7 @@ const commandsObj = {};
 twitchCommands.forEach(command => {
   commandsObj[command] = require(`./twitch/${command}`);
 });
-console.log(chalk.cyan(`Registered Twitch Commands: ${twitchCommands.join(', ')}`));
+console.log(chalk.yellow(`Registered Twitch Commands: ${twitchCommands.join(', ')}`));
 
 module.exports = (user, message) => {
 
