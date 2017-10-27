@@ -4,6 +4,15 @@ const Screen = mongoose.model('Screen');
 const Widget = mongoose.model('Widget');
 const getScreen = require('../db/lib/getScreenDB');
 
+//+ GET landing
+exports.landing = async (req, res) => {
+  const screens = await Screen.find();
+  res.render('landing', {
+    screens
+  });
+}
+
+//+ GET screen
 exports.default = async (req, res) => {
 
   const screenPromise = getScreen(req.params.name);
@@ -18,6 +27,13 @@ exports.default = async (req, res) => {
 
 }
 
+//+ POST save screen
+exports.saveScreen = async(req, res) => {
+  console.log(req.body);
+  res.json(req.body);
+}
+
+//+ POST new screen
 exports.newScreen = async (req, res) => {
 
   if(!req.body) return res.redirect('/');

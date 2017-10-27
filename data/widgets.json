@@ -1,0 +1,14 @@
+[
+  {
+    "name": "chillum_info",
+    "description": "Displays info for chillum lite"
+  },
+  {
+    "name": "all_screens",
+    "description": "Displays all saved Screens as buttons"
+  },
+  {
+    "name": "chat",
+    "description": "Shows Live Twitch Chat (bot account)"
+  }
+]

@@ -42,7 +42,14 @@ ul {
   .text-center;
   font-size:5rem;
   padding:1rem 0;
+  .font-thin;
   span { .inline-block; }
   span.spin { .transform(scale(-1, 1)) }
-  span.accent { .font-thin; }
+  &.fixed {
+    .opacity(.2);
+    .fixed;top:42%;
+    font-size:8rem;
+    width:100%;margin:auto;
+    .text-center;
+  }
 }

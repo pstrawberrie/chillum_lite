@@ -1,5 +1,5 @@
 doctype html
-html.theme-default
+html.default.theme-default
   //
     ......._....._._......_......................._......_._.......
     ......|.|...(_).|....|.|.....................|.|....(_).|......
@@ -15,12 +15,15 @@ html.theme-default
     link(rel='stylesheet', href='/styles/bundle.min.css')
     link(rel="shortcut icon" type="image/png" href="/images/favicon.png")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-  body.screen
+  body
     include ../partials/flashes
     block header
       
     .content
       block content
+
+    // Modals
+    include ../modals/newScreenModal
 
     block scripts
       script(src="/socket.io/socket.io.js")

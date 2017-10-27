@@ -1,0 +1,4 @@
+.widget#all_screens(style=``)
+  a.btn Screens
+  each s in dashboard.screens
+    a.btn(href=`/screen/${s.name}`)= s.name

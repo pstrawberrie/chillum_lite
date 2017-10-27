@@ -1,0 +1,9 @@
+extends layouts/defaultLayout
+
+block content
+  .logo.fixed
+    | chi<span class="spin">L</span>Lum Lite
+  .section.flex-column#landing
+    each screen in screens
+      .screens
+        a.btn(href=`/screen/${screen.name}`)= screen.name
